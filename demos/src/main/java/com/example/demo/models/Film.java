@@ -233,4 +233,11 @@ public class Film implements Serializable {
 		return inventory;
 	}
 
+	@Override
+	public String toString() {
+		return "Film [filmId=" + filmId + ", title=" + title + ", description=" + description + ", length=" + length
+				+ ", rating=" + rating + ", releaseYear=" + releaseYear + ", rentalDuration=" + rentalDuration
+				+ ", rentalRate=" + rentalRate + ", replacementCost=" + replacementCost + "]";
+	}
+
 }
