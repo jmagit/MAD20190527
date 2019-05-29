@@ -92,9 +92,9 @@ public class DemosApplication implements CommandLineRunner {
 //		srvDom.getAll().stream()
 //		.map(item -> CityDTO.from(item))
 //		.forEach(item -> System.out.println(item));
-		City city = srvDom.get(1).get();
-		city.getAddresses().get(2).getCustomers().forEach(
-				item -> System.out.println(item.getFirstName()));
+//		City city = srvDom.get(1).get();
+//		city.getAddresses().get(0).getCustomers().forEach(
+//				item -> System.out.println(item));
 	}
 
 }

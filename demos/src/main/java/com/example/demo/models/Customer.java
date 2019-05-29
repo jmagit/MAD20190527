@@ -174,4 +174,10 @@ public class Customer implements Serializable {
 		return rental;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+				+ email + "]";
+	}
+
 }
