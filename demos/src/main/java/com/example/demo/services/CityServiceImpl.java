@@ -28,7 +28,7 @@ public class CityServiceImpl implements CityService {
 	}
 	@Override
 	public boolean isValid(City item) {
-		return validate(item).size() > 0;
+		return validate(item).size() == 0;
 	}
 	@Override
 	public boolean notIsValid(City item) {

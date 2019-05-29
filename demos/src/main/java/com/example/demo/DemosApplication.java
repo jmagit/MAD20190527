@@ -61,7 +61,7 @@ public class DemosApplication implements CommandLineRunner {
 	private Validator validator;
 
 	@Override
-	@Transactional
+//	@Transactional
 	public void run(String... args) throws Exception {
 //		System.out.println(p1.toString());
 //		p1.setX(100);
