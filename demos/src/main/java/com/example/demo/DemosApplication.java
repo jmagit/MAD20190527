@@ -29,6 +29,9 @@ import com.example.demo.repositories.CityRepository;
 import com.example.demo.repositories.FilmRepositoy;
 import com.example.demo.services.CityServiceImpl;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@EnableSwagger2
 @SpringBootApplication
 public class DemosApplication implements CommandLineRunner {
 

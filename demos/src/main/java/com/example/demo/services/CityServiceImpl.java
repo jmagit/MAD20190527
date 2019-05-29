@@ -9,9 +9,12 @@ import javax.validation.Valid;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.contracts.CityService;
+import com.example.demo.exceptions.InvalidDataException;
 import com.example.demo.models.City;
 import com.example.demo.repositories.CityRepository;
 
@@ -39,6 +42,10 @@ public class CityServiceImpl implements CityService {
 	public List<City> getAll() {
 		return dao.findAll();		
 	}
+	@Override
+	public Page<City> getAll(Pageable pageable) {
+		return dao.findAll(pageable);
+	}
 	
 	@Override
 	public Optional<City> get(int id) {
@@ -48,18 +55,18 @@ public class CityServiceImpl implements CityService {
 	@Override
 	public City add(City item) throws Exception {
 		if(notIsValid(item))
-			throw new Exception("Invalid");
+			throw new InvalidDataException("Invalid");
 		if(dao.findById(item.getCityId()).isPresent())
-			throw new Exception("Duplicate key");
+			throw new InvalidDataException("Duplicate key");
 		dao.save(item);
 		return item;
 	}
 	@Override
 	public City change(City item) throws Exception {
 		if(notIsValid(item))
-			throw new Exception("Invalid");
+			throw new InvalidDataException("Invalid");
 		if(dao.findById(item.getCityId()).isEmpty())
-			throw new Exception("Missing item");
+			throw new InvalidDataException("Missing item");
 		dao.save(item);
 		return item;
 	}
@@ -68,7 +75,7 @@ public class CityServiceImpl implements CityService {
 		try {
 			dao.deleteById(id);
 		} catch (Exception e) {
-			throw new Exception("Missing item", e);
+			throw new InvalidDataException("Missing item", e);
 		}
 	}
 }
