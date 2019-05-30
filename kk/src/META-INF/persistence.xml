@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="kk">
-		<class>com.example.demo.models.Actor</class>
-		<class>com.example.demo.models.Address</class>
-		<class>com.example.demo.models.Category</class>
-		<class>com.example.demo.models.City</class>
-		<class>com.example.demo.models.Country</class>
-		<class>com.example.demo.models.Customer</class>
-		<class>com.example.demo.models.Film</class>
-		<class>com.example.demo.models.FilmActor</class>
-		<class>com.example.demo.models.FilmActorPK</class>
-		<class>com.example.demo.models.FilmCategory</class>
-		<class>com.example.demo.models.FilmCategoryPK</class>
-		<class>com.example.demo.models.FilmText</class>
-		<class>com.example.demo.models.Inventory</class>
-		<class>com.example.demo.models.Language</class>
-		<class>com.example.demo.models.Payment</class>
-		<class>com.example.demo.models.Rental</class>
-		<class>com.example.demo.models.Staff</class>
-		<class>com.example.demo.models.Store</class>
+		<class>com.example.catalogo.domains.Actor</class>
+		<class>com.example.catalogo.domains.Category</class>
+		<class>com.example.catalogo.domains.Film</class>
+		<class>com.example.catalogo.domains.FilmActor</class>
+		<class>com.example.catalogo.domains.FilmActorPK</class>
+		<class>com.example.catalogo.domains.FilmCategory</class>
+		<class>com.example.catalogo.domains.FilmCategoryPK</class>
+		<class>com.example.catalogo.domains.FilmText</class>
+		<class>com.example.catalogo.domains.Language</class>
 	</persistence-unit>
 </persistence>

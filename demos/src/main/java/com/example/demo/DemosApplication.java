@@ -25,6 +25,7 @@ import com.example.demo.ioc.Servicio;
 import com.example.demo.models.City;
 import com.example.demo.models.Country;
 import com.example.demo.models.dtos.CityDTO;
+import com.example.demo.models.dtos.FilmShortDTO;
 import com.example.demo.repositories.CityRepository;
 import com.example.demo.repositories.FilmRepositoy;
 import com.example.demo.services.CityServiceImpl;
@@ -91,6 +92,8 @@ public class DemosApplication implements CommandLineRunner {
 //		if(rslt.isPresent())
 //			System.out.println("Encontrada; " + rslt.get().getCountry().getCountry());
 //		pelis.findTop10ByTitleStartingWithAndRentalDurationBetween("a", (byte)2, (byte)5).stream()
+//			.forEach(item -> System.out.println(item));
+//		pelis.findByTitleStartingWith("", FilmShortDTO.class).stream()
 //			.forEach(item -> System.out.println(item));
 //		srvDom.getAll().stream()
 //		.map(item -> CityDTO.from(item))
