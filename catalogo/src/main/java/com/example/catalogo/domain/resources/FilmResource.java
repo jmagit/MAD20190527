@@ -30,6 +30,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.catalogo.application.dtos.ActorDTO;
 import com.example.catalogo.application.dtos.FilmEditDTO;
+import com.example.catalogo.application.dtos.FilmShortDTO;
 import com.example.catalogo.domain.entities.Category;
 import com.example.catalogo.domain.entities.Film;
 import com.example.catalogo.infraestructures.repositories.FilmRepository;
@@ -60,6 +61,19 @@ public class FilmResource {
 	@GetMapping
 	public Page<Film> getAll(Pageable pageable) {
 		return dao.findAll(pageable);
+	}
+	@GetMapping("/minimo")
+	public List<FilmShortDTO> getAll() {
+		return dao.findAll().stream()
+				.map(item-> FilmShortDTO.from(item))
+				.collect(Collectors.toList());
+	}
+	@GetMapping(path = "/minimo/{id}")
+	public FilmShortDTO getOneCorto(@PathVariable int id) throws Exception {
+		Optional<Film> rslt = dao.findById(id);
+		if (rslt.isEmpty())
+			throw new NotFoundException();
+		return FilmShortDTO.from(rslt.get());
 	}
 
 	@GetMapping(path = "/{id}")

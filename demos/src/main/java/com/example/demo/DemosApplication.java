@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -15,8 +16,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.contracts.CityService;
 import com.example.demo.ioc.Linea;
@@ -63,6 +69,7 @@ public class DemosApplication implements CommandLineRunner {
 
 	@Autowired
 	private Validator validator;
+	@Autowired RestTemplate srvRest;
 
 	@Override
 //	@Transactional
@@ -101,6 +108,20 @@ public class DemosApplication implements CommandLineRunner {
 //		City city = srvDom.get(1).get();
 //		city.getAddresses().get(0).getCustomers().forEach(
 //				item -> System.out.println(item));
+//		FilmShortDTO rslt = srvRest.getForObject( 
+//				"http://localhost:4301/catalogo/peliculas/minimo/{id}", 
+//				FilmShortDTO.class, 1);
+//		System.out.println(rslt);
+		ResponseEntity<List<FilmShortDTO>> response = 
+			srvRest.exchange(
+				"http://localhost:4301/catalogo/peliculas/minimo", 
+				HttpMethod.GET,
+				HttpEntity.EMPTY, 
+				new ParameterizedTypeReference<List<FilmShortDTO>>() {
+				});
+		List<FilmShortDTO> rslt = response.getBody();
+		rslt.forEach(item -> System.out.println(item));
+
 	}
 
 }
